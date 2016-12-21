@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="seckill-exception:war">
+    <output-path>$PROJECT_DIR$/seckill-exception/target</output-path>
+    <root id="archive" name="seckill-exception.war">
+      <element id="artifact" artifact-name="seckill-exception:war exploded" />
+    </root>
+  </artifact>
+</component>

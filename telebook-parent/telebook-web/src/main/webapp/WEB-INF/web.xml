@@ -1,0 +1,27 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                      http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"
+         metadata-complete="true">
+
+  <servlet>
+    
+    <servlet-name>telebook-servlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath*:spring/spring-dao.xml,classpath*:spring/spring-service.xml,classpath*:spring/spring-web.xml</param-value>
+      <!--spring-web.xml为DispatcherServlet提供controller这个RequestMappingHandlerMapping的bean-->
+    </init-param>
+
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>telebook-servlet</servlet-name>
+    <!--dispatcher拦截所有request并做delegate-->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+</web-app>

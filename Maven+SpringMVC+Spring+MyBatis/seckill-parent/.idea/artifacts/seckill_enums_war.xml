@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="seckill-enums:war">
+    <output-path>$PROJECT_DIR$/seckill-enums/target</output-path>
+    <root id="archive" name="seckill-enums.war">
+      <element id="artifact" artifact-name="seckill-enums:war exploded" />
+    </root>
+  </artifact>
+</component>

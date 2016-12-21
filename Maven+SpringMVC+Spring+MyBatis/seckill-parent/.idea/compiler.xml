@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="seckill-dao" />
+        <module name="seckill-dto" />
+        <module name="seckill-entity" />
+        <module name="seckill-enums" />
+        <module name="seckill-exception" />
+        <module name="seckill-redis" />
+        <module name="seckill-service" />
+        <module name="seckill-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="seckill-dao" target="1.5" />
+      <module name="seckill-dto" target="1.5" />
+      <module name="seckill-entity" target="1.5" />
+      <module name="seckill-enums" target="1.5" />
+      <module name="seckill-exception" target="1.5" />
+      <module name="seckill-parent" target="1.5" />
+      <module name="seckill-redis" target="1.5" />
+      <module name="seckill-service" target="1.5" />
+      <module name="seckill-web" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

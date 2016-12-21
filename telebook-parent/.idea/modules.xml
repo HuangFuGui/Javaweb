@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/telebook-dao/telebook-dao.iml" filepath="$PROJECT_DIR$/telebook-dao/telebook-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/telebook-dto/telebook-dto.iml" filepath="$PROJECT_DIR$/telebook-dto/telebook-dto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/telebook-entity/telebook-entity.iml" filepath="$PROJECT_DIR$/telebook-entity/telebook-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/telebook-parent.iml" filepath="$PROJECT_DIR$/telebook-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/telebook-service/telebook-service.iml" filepath="$PROJECT_DIR$/telebook-service/telebook-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/telebook-web/telebook-web.iml" filepath="$PROJECT_DIR$/telebook-web/telebook-web.iml" />
+    </modules>
+  </component>
+</project>

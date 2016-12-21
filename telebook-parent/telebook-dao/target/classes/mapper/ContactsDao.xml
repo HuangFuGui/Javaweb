@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ContactsDao">
+
+    <select id="selectAllContacts" resultType="Contacts">
+      SELECT
+       contact_id,
+       head_img,
+       contact_name,
+       contact_phone,
+       contact_address
+      FROM
+       contacts
+      WHERE
+       account_id = #{accountId}
+    </select>
+
+    <select id="selectContactById" resultType="Contacts">
+      SELECT
+       contact_id,
+       account_id,
+       head_img,
+       contact_name,
+       contact_phone,
+       contact_address
+      FROM
+       contacts
+      WHERE
+       contact_id = #{contactId}
+    </select>
+
+    <delete id="deleteContactById">
+      DELETE
+        FROM contacts
+      WHERE
+        contact_id = #{contactId}
+    </delete>
+
+    <insert id="insertContact">
+        INSERT
+          INTO contacts
+        VALUES
+          (DEFAULT,#{accountId},#{headImg},#{contactName},#{contactPhone},#{contactAddress})
+    </insert>
+
+    <update id="updateContact">
+      UPDATE
+        contacts
+      SET
+        head_img = #{headImg},
+        contact_name = #{contactName},
+        contact_phone = #{contactPhone},
+        contact_address = #{contactAddress}
+      WHERE
+        contact_id = #{contactId}
+    </update>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:task="http://www.springframework.org/schema/task"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	 http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+
+	 ">
+
+
+	<!-- 引入外部属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- 配置业务层类 -->
+	<bean id="accountService" class="cn.muke.spring.demo4.AccountServiceImpl">
+		<!-- 注入DAO接口 -->
+		<property name="accountDAO" ref="accountDAO"></property>
+	</bean>
+	
+	<!-- 配置DAO类(数据库访问) -->
+	<bean id="accountDAO" class="cn.muke.spring.demo4.AccountDAOImpl">
+		<!-- 注入c3p0连接池,用于创建Jdbc模版 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 
+	使用事务注解驱动开启注解事务
+	开启注解事务后只需要在需要事务管理的地方添加注解即可(在**业务层实现类AccountServiceImpl**添加注解)
+	 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!--
+	1.在Hibernate中，默认的事务管理提交方式为false,因此需要开启事务,在完成代码编写(session桥梁)
+	后要手动提交事务,关闭事务.
+	2.Spring默认的事务管理提交方式为true,即会自动提交事务,不用人为手动提交事务.
+	3.若事务开启后代码发生异常,事务不会提交,会进行回滚,从而体现事务原子性(要么组合逻辑一起成功,要么一起失败).
+	 -->
+</beans>

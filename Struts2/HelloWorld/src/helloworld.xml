@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="helloworld" namespace="/"   extends="struts-default">
+		   
+	   <!-- 通配符匹配 ，com.imooc.action.HelloWorldAction的HelloWorld也可以是通配符，但这会跟默认action冲突-->
+	   <action name="HelloWorld_*" method="{1}" class="com.imooc.action.HelloWorldAction">
+	       <result name="success">/result.jsp</result>
+	   	   <result name="add">/{1}.jsp</result>
+	   	   <result name="update">/{1}.jsp</result>
+	   </action>
+	   
+	   <action name="LoginAction" method="login" class="com.imooc.action.LoginAction">
+	   		<result>/success.jsp</result>
+	   </action>
+	 </package>
+</struts>

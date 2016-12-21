@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:aop="http://www.springframework.org/schema/aop"
+     xmlns:tx="http://www.springframework.org/schema/tx"
+     xmlns:task="http://www.springframework.org/schema/task"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	 http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+
+	 ">
+
+
+	<!-- 引入外部属性文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
+	
+	<!-- 配置c3p0连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<property name="driverClass" value="${jdbc.driverClass}"></property>
+	<property name="jdbcUrl" value="${jdbc.url}"></property>
+	<property name="user" value="${jdbc.username}"></property>
+	<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- 配置业务层类 -->
+	<bean id="accountService" class="cn.muke.spring.demo3.AccountServiceImpl">
+		<!-- 把DAO类注入到Service层中！ -->
+		<property name="accountDAO" ref="accountDAO"></property>
+	</bean>
+	
+	<!-- 配置DAO类 -->
+	<bean id="accountDAO" class="cn.muke.spring.demo3.AccountDAOImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 配置事务的通知（事务的增强） -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- 配置事务通知属性：transfer方法要执行事务通知 ！-->
+			<tx:method name="transfer" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置AOP切面,基于AOP的思想 -->
+	<aop:config>
+		<!-- 配置切入点 -->
+		<aop:pointcut expression="execution(* cn.muke.spring.demo3.AccountService+.*(..))" id="pointcut1"/>
+		<!-- 配置切面(此时即相当于配置事务增强),可以理解aop:advisor是专门进行事务通知的 -->
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut1"/>
+	</aop:config>
+	
+	<!--
+	这时accountService就是一个自动代理类(交给事务管理了),在其产生过程就进行了自动增强(通知).
+	可以直接使用
+	 -->
+</beans>
