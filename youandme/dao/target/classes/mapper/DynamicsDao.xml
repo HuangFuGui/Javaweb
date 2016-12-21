@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.DynamicsDao">
+
+    <insert id="insertDynamics">
+      INSERT
+        social_dynamics
+      VALUES
+        (DEFAULT,#{userId},#{dynamicsText},#{dynamicsFile},#{createTime},DEFAULT)
+    </insert>
+
+    <select id="selectAllDynamics" resultType="socialDynamics">
+        SELECT
+          sd.dynamics_id,
+          sd.user_id,
+          sd.dynamics_text,
+          sd.dynamics_file,
+          sd.create_time,
+          sd.like_num,
+          ut.user_id "user.user_id",
+          ut.username "user.username",
+          ut.head_img "user.head_img"
+        FROM
+          social_dynamics AS sd
+        INNER JOIN
+          user AS ut USING(user_id)
+        ORDER BY
+          sd.dynamics_id
+        DESC
+    </select>
+
+    <select id="selectMaxDynamicsId" resultType="String">
+        SELECT
+          MAX(dynamics_id)
+        FROM
+          social_dynamics
+    </select>
+
+    <select id="selectDynamicsFromPos" resultType="socialDynamics">
+      SELECT
+          sd.dynamics_id,
+          sd.user_id,
+          sd.dynamics_text,
+          sd.dynamics_file,
+          sd.create_time,
+          sd.like_num,
+          ut.user_id "user.user_id",
+          ut.username "user.username",
+          ut.head_img "user.head_img"
+      FROM
+          social_dynamics AS sd
+      INNER JOIN
+          user AS ut USING(user_id)
+      WHERE
+        sd.dynamics_id > #{dynamicsId}
+    </select>
+
+    <update id="updateLikeNum">
+        UPDATE
+          social_dynamics
+        SET
+          like_num = like_num + 1
+        WHERE
+          dynamics_id = #{dynamicsId}
+    </update>
+
+    <update id="updateLikeNumSub">
+        UPDATE
+          social_dynamics
+        SET
+          like_num = like_num - 1
+        WHERE
+          dynamics_id = #{dynamicsId}
+    </update>
+
+    <insert id="insertLike">
+        INSERT
+          dynamics_like_user
+        VALUES
+          (#{dynamicsId},#{userId})
+    </insert>
+
+    <delete id="deleteLike">
+        DELETE FROM
+          dynamics_like_user
+        WHERE
+          dynamics_id = #{dynamicsId} AND user_id = #{userId}
+    </delete>
+
+    <select id="selectLike" resultType="int">
+        SELECT
+          COUNT(*)
+        FROM
+          dynamics_like_user
+        WHERE
+          dynamics_id = #{dynamicsId} AND user_id = #{userId}
+    </select>
+
+    <select id="selectLikeNum" resultType="int">
+        SELECT
+          like_num
+        FROM
+          social_dynamics
+        WHERE
+          dynamics_id = #{dynamicsId}
+    </select>
+
+    <select id="selectWhichLike" resultType="int">
+        SELECT
+          dynamics_id
+        FROM
+          dynamics_like_user
+        WHERE
+          user_id = #{userId}
+        GROUP BY
+          dynamics_id
+    </select>
+
+    <select id="selectDetailDynamicsById" resultType="SocialDynamics">
+      SELECT
+        u.user_id "user.user_id",
+        u.username "user.username",
+        u.head_img "user.head_img",
+        u.email "user.email",
+        sd.dynamics_text,
+        sd.dynamics_file,
+        sd.like_num
+      FROM
+        social_dynamics AS sd
+      INNER JOIN
+        user AS u USING(user_id)
+      WHERE
+        sd.dynamics_id = #{dynamicsId}
+    </select>
+
+    <select id="selectLikeUserOfDynamics" resultType="User">
+        SELECT
+          u.user_id,
+          u.head_img
+        FROM
+          user AS u
+        INNER JOIN
+          dynamics_like_user AS dlu USING (user_id)
+        WHERE
+          dlu.dynamics_id = #{dynamicsId}
+    </select>
+
+</mapper>

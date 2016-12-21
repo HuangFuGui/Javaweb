@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.huangfugui.telebook</groupId>
+    <artifactId>telebook-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>telebook-dao</artifactId>
+  <packaging>jar</packaging>
+
+  <name>telebook-dao Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+
+    <!--dao层依赖于entity层-->
+    <dependency>
+      <groupId>org.huangfugui.telebook</groupId>
+      <artifactId>telebook-entity</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--mybatis依赖 -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.4.1</version>
+    </dependency>
+
+    <!--The spring-core and spring-beans modules provide the fundamental parts of
+    the framework, including the IoC and Dependency Injection features.-->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-core</artifactId>
+          <version>4.1.7.RELEASE</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-beans</artifactId>
+          <version>4.1.7.RELEASE</version>
+      </dependency>
+
+      <!--...The Context module inherits its features from the Beans module and adds
+      support for internationalization (using, for example, resource bundles), event
+      propagation, resource loading... -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>4.1.7.RELEASE</version>
+      </dependency>
+
+      <!--jdbc驱动 -->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>5.1.35</version>
+          <scope>runtime</scope>
+      </dependency>
+
+      <!-- 提供spring对jdbc数据访问封装好的类-->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-jdbc</artifactId>
+          <version>4.1.7.RELEASE</version>
+      </dependency>
+
+      <!--c3p0连接池依赖，连接池为数据库的访问提高效率。
+          在与数据库打交道的过程中，每次操作数据库都需要创建connection连接，是很浪费资源的。
+          所以解决办法是建立连接池，初始化时往连接池中放入一定数量的连接对象，需要时从池中
+          取出连接，使用完毕后释放资源将连接放回池子。
+          数据库连接池负责分配,管理和释放数据库连接,它允许应用程序重复使用一个现有的数据库
+          连接,而不是重新建立一个。
+          connection.close()：Releases this Connection object's database and JDBC resources
+          immediately instead of waiting for them to be automatically released.
+          最小连接数:是连接池一直保持的数据库连接,所以如果应用程序对数据库连接的使用量不大,将会
+          有大量的数据库连接资源被浪费。
+          最大连接数:是连接池能申请的最大连接数,如果数据库连接请求超过次数,后面的数据库连接请求
+          将被加入到等待队列中,这会影响以后的数据库操作。
+          如果最小连接数与最大连接数相差很大:那么最先连接请求将会获利,之后超过最小连接数量的连接
+          请求等价于建立一个新的数据库连接对象。不过,这些大于最小连接数的数据库连接在使用完不会马
+          上被回收，他将被放到连接池中等待重复使用或是空间超时后被回收。
+       -->
+      <dependency>
+          <groupId>c3p0</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>0.9.1.2</version>
+      </dependency>
+
+      <!-- spring与mybatis的整合依赖，使用1.3.0高版本，否则会报错-->
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis-spring</artifactId>
+          <version>1.3.0</version>
+      </dependency>
+
+      <!--spring test依赖 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-test</artifactId>
+          <version>4.1.7.RELEASE</version>
+      </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>telebook-dao</finalName>
+  </build>
+</project>

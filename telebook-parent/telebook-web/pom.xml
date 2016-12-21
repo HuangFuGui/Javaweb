@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.huangfugui.telebook</groupId>
+    <artifactId>telebook-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>telebook-web</artifactId>
+  <packaging>war</packaging>
+
+  <name>telebook-web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+
+    <!--web模块依赖于service模块 -->
+    <dependency>
+      <groupId>org.huangfugui.telebook</groupId>
+      <artifactId>telebook-service</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--web模块依赖于dto模块-->
+    <dependency>
+      <groupId>org.huangfugui.telebook</groupId>
+      <artifactId>telebook-dto</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--Spring Web MVC 依赖-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>4.1.7.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>4.1.7.RELEASE</version>
+    </dependency>
+
+    <!--ViewResolver jstl依赖 -->
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+    <!--@ResponseBody将对象转化为JSON格式的依赖-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.5.4</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>telebook-web</finalName>
+  </build>
+</project>

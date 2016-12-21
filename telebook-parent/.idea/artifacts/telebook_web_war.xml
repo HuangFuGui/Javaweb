@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="telebook-web:war">
+    <output-path>$PROJECT_DIR$/telebook-web/target</output-path>
+    <root id="archive" name="telebook-web.war">
+      <element id="artifact" artifact-name="telebook-web:war exploded" />
+    </root>
+  </artifact>
+</component>

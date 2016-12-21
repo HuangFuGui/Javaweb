@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AccountsDao">
+
+    <select id="selectAccount" resultType="String">
+      SELECT
+        account_id
+      FROM
+        accounts
+      WHERE
+        account = #{account} AND password = #{password}
+    </select>
+
+    <select id="selectAccountBeforeInsert" resultType="int">
+        SELECT
+          COUNT(account_id)
+        FROM
+          accounts
+        WHERE
+          account = #{account}
+    </select>
+
+    <insert id="insertAccount">
+      INSERT
+        INTO accounts
+      VALUES
+        (DEFAULT,#{account},#{password})
+    </insert>
+
+</mapper>

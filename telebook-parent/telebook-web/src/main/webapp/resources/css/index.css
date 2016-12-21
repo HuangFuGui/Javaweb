@@ -1,0 +1,86 @@
+.noticeSpan{
+    color:red;
+    display: block;
+    margin-left: 50px;
+    margin-top:20px;
+}
+.head_img{
+    width:35px;
+    height:35px;
+    border-radius: 35px;
+    background-size: 100% 100%;
+}
+#addContactsBtn{
+    position: relative;
+    top: 50px;
+    left: 120px;
+}
+.table_me{
+    width:80%;
+    position: relative;
+    top: 55px;
+    left: 120px;
+}
+.curAccount{
+    position: absolute;
+    top: 50px;
+    right: 30px;
+}
+.selectHeadImg{
+    display: block;
+    margin-top: 70px;
+    margin-left: 320px;
+}
+.selectImgForm{
+    display: block;
+    margin-top:20px;
+    margin-left:320px;
+}
+.update_head_img{
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
+    margin-left: 320px;
+    margin-top: 20px;
+    border: solid 6px lightgrey;
+}
+.update_name{
+    display: block;
+    margin-left: 730px;
+    margin-top: -330px;
+}
+.update_name_input{
+    width: 300px;
+    margin-left: 730px;
+    margin-top: 20px;
+}
+.update_phone{
+    display: block;
+    margin-left: 730px;
+    margin-top: 30px;
+}
+.update_phone_input{
+    width: 300px;
+    margin-left: 730px;
+    margin-top: 20px;
+}
+.update_address{
+    display: block;
+    margin-left: 730px;
+    margin-top: 30px;
+}
+.update_address_input{
+    width: 300px;
+    margin-left: 730px;
+    margin-top: 20px;
+}
+.updateBtn{
+    margin-left: 550px;
+    margin-top: 80px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    height:80px;
+    width: 220px;
+}
+

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="telebook-dto:war">
+    <output-path>$PROJECT_DIR$/telebook-dto/target</output-path>
+    <root id="archive" name="telebook-dto.war">
+      <element id="artifact" artifact-name="telebook-dto:war exploded" />
+    </root>
+  </artifact>
+</component>
