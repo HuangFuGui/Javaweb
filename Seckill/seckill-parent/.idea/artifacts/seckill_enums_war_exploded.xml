@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="seckill-enums:war exploded">
+    <output-path>$PROJECT_DIR$/seckill-enums/target/seckill-enums</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="seckill-enums" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/seckill-enums/target/seckill-enums/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="seckill-enums/web/Web" />
+    </root>
+  </artifact>
+</component>

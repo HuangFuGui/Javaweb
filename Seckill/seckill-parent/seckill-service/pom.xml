@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.geek.seckill</groupId>
+    <artifactId>seckill-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>seckill-service</artifactId>
+  <packaging>jar</packaging>
+
+  <name>seckill-service Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+
+    <!-- service模块依赖于dto模块（dto模块已经依赖于entity模块，有依赖的传递性！）-->
+    <dependency>
+      <groupId>org.geek.seckill</groupId>
+      <artifactId>seckill-dto</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--service模块依赖于exception模块 -->
+    <dependency>
+      <groupId>org.geek.seckill</groupId>
+      <artifactId>seckill-exception</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!-- service依赖于dao模块 -->
+    <dependency>
+      <groupId>org.geek.seckill</groupId>
+      <artifactId>seckill-dao</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--service模块依赖于redis模块 -->
+    <dependency>
+      <groupId>org.geek.seckill</groupId>
+      <artifactId>seckill-redis</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>4.1.7.RELEASE</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2</version>
+    </dependency>
+
+  </dependencies>
+
+
+
+  <build>
+    <finalName>seckill-service</finalName>
+  </build>
+
+</project>
