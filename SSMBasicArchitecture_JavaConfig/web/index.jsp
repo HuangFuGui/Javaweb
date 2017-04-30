@@ -18,7 +18,7 @@
   <form>
     用户名：<input type="text" id="username" />
     密码：<input type="text" id="password">
-    <input type="button" value="提交" id="btn" />
+    <input type="button" value="提交测试" id="btn" />
   </form>
   </body>
   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>

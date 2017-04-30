@@ -1,10 +1,9 @@
 package org.huangfugui.spring;
 
+import org.huangfugui.spring.mvc.interceptor.SpringMVCInterceptor;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * Created by huangfugui on 2017/4/28.
@@ -33,4 +32,12 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         // TODO Auto-generated method stub
         super.addResourceHandlers(registry);
     }*/
+
+    public void addInterceptors(InterceptorRegistry registry){
+        InterceptorRegistration interceptorRegistration =  registry.addInterceptor(new SpringMVCInterceptor());
+        //在所有handler操作前进行拦截检查，除了注册与登录操作
+        interceptorRegistration.addPathPatterns("/basic/*");
+        interceptorRegistration.excludePathPatterns("/basic/register");
+        interceptorRegistration.excludePathPatterns("/basic/login");
+    }
 }

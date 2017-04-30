@@ -4,8 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.huangfugui.ibatis.mapper.UserMapper">
 
+    <!--
+      username字段有唯一索引
+      create unique index unique_constraint_username on t_user (username);
+    -->
     <insert id="insertUser">
-      INSERT INTO
+      INSERT IGNORE INTO
         t_user (username,password)
       VALUES
         (#{username},#{password})

@@ -25,16 +25,19 @@ public class BasicController {
                     method = RequestMethod.POST,
                     produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public Result<String> registerHandler(HttpServletRequest request, Model model){
-
+    public Result registerHandler(HttpServletRequest request, Model model){
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        boolean result = basicService.registerUser(username,password);
-        if(result==true){
-            return new Result(200,"register successfully!");
-        }
-        else{
-            return new Result(200,"register failed!");
-        }
+        return basicService.registerUser(username,password);
+    }
+
+    @RequestMapping(value = "/login",
+            method = RequestMethod.POST,
+            produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public Result loginHandler(HttpServletRequest request, Model model){
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        return basicService.login(username,password,request);
     }
 }

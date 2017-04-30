@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Param;
 import org.huangfugui.ibatis.po.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by huangfugui on 2017/4/27.
  */
@@ -24,5 +26,5 @@ public interface UserMapper {
      * @param password
      * @return
      */
-    User selectByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
+    User selectByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }
