@@ -1,0 +1,22 @@
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-parent -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-entity -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-dao -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-service -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-dto -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-enums -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-exception -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-redis -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+mvn archetype:generate -DgroupId=org.geek.seckill -DartifactId=seckill-web -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeCatalog=internal
+
+
+
+×¢£º°æ±¾ºÅÎª0.0.1-SNAPSHOT

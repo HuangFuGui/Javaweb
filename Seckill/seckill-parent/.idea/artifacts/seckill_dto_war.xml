@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="seckill-dto:war">
+    <output-path>$PROJECT_DIR$/seckill-dto/target</output-path>
+    <root id="archive" name="seckill-dto.war">
+      <element id="artifact" artifact-name="seckill-dto:war exploded" />
+    </root>
+  </artifact>
+</component>
