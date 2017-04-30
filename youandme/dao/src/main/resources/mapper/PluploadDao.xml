@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PluploadDao">
+
+    <insert id="insertFileInfo">
+      INSERT
+        plupload_file
+      VALUES
+        (DEFAULT,#{fileName},#{uploadUsername},#{uploadTime})
+    </insert>
+
+    <select id="selectFileByUsername" resultType="PluploadFile">
+      SELECT
+        *
+      FROM
+        plupload_file
+      WHERE
+        upload_username = #{uploadUsername}
+    </select>
+
+    <select id="selectFileById" resultType="PluploadFile">
+      SELECT
+        *
+      FROM
+        plupload_file
+      WHERE
+        id = #{id}
+    </select>
+
+    <delete id="deleteInfoOfFile">
+        DELETE
+          FROM plupload_file
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

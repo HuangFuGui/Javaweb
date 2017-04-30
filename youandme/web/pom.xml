@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.hfg.youandme</groupId>
+    <artifactId>youandme</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>web</artifactId>
+  <packaging>war</packaging>
+  <name>web Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <dependencies>
+
+    <!--web模块依赖于service模块 -->
+    <dependency>
+      <groupId>org.hfg.youandme</groupId>
+      <artifactId>service</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <!--web模块依赖于dto模块 -->
+    <dependency>
+      <groupId>org.hfg.youandme</groupId>
+      <artifactId>dto</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <finalName>web</finalName>
+  </build>
+</project>

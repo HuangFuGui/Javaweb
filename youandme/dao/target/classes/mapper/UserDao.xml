@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.UserDao">
+
+    <update id="updateUserHeadImg">
+      UPDATE
+        user
+      SET
+        head_img = #{headImg}
+      WHERE
+        user_id = #{userId}
+    </update>
+
+    <select id="selectUserById" resultType="User">
+      SELECT
+        *
+      FROM
+        user
+      WHERE
+        user_id = #{userId}
+    </select>
+
+    <update id="updateUser">
+        UPDATE
+          user
+        SET
+          username = #{username},
+          email = #{email},
+          address = #{address},
+          description = #{description}
+        WHERE
+          user_id = #{userId}
+    </update>
+
+    <update id="updateDynamicsNum">
+        UPDATE
+          user
+        SET
+          dynamics_num = dynamics_num + 1
+        WHERE
+          user_id = #{userId}
+    </update>
+
+    <select id="selectAllUserForLucene" resultType="User">
+      SELECT
+        *
+      FROM
+        user
+    </select>
+
+</mapper>
