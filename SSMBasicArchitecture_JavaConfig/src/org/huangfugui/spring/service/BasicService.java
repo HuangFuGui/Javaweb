@@ -36,7 +36,7 @@ public class BasicService {
             //登录记录session
             HttpSession session = request.getSession();
             session.setAttribute("userSession",user);
-            //像客户端返回user对象数据
+            //向客户端返回user对象数据
             List<User> list = new ArrayList<User>();
             list.add(user);
             return new Result(1,"登陆成功",list);//数据库中有相应用户名与密码
