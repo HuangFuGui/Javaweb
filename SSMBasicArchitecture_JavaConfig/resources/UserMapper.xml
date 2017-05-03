@@ -10,9 +10,9 @@
     -->
     <insert id="insertUser">
       INSERT IGNORE INTO
-        t_user (username,password)
+        t_user (username,password,user_type)
       VALUES
-        (#{username},#{password})
+        (#{username},#{password},#{userType})
     </insert>
 
     <select id="selectByUsernameAndPassword" resultType="user">
@@ -20,13 +20,33 @@
         id,
         username,
         password,
+        nickname,
         sex,
         head_image,
-        sign
+        sign,
+        user_type
       FROM
         t_user
       WHERE
         username = #{username} AND password = #{password}
     </select>
+
+    <update id="updateNicknameById">
+        UPDATE
+          t_user
+        SET
+          nickname = #{nickname}
+        WHERE
+          id = #{id}
+    </update>
+
+    <update id="updateSignById">
+        UPDATE
+          t_user
+        SET
+          sign = #{sign}
+        WHERE
+          id = #{id}
+    </update>
 
 </mapper>

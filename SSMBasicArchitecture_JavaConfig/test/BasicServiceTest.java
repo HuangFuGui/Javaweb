@@ -8,11 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import static org.junit.Assert.*;
-
 /**
  * Created by huangfugui on 2017/4/28.
  */
@@ -25,7 +20,7 @@ public class BasicServiceTest {
 
     @Test
     public void registerUser() throws Exception {
-        Result result = basicService.registerUser("geek_huangfugui@163.com","123qwe");
+        Result result = basicService.registerUser("1151650717@qq.com","123","0");
         System.out.println(result);
     }
 }

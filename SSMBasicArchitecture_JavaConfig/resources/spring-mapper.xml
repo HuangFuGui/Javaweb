@@ -15,7 +15,7 @@
             <value>root</value>
         </property>
         <property name="password">
-            <value></value>
+            <value>geek_huangfugui</value>
         </property>
     </bean>
 

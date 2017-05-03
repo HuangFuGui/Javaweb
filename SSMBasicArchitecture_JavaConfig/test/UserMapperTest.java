@@ -1,5 +1,6 @@
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
+import org.huangfugui.ibatis.enums.UserType;
 import org.huangfugui.ibatis.mapper.UserMapper;
 import org.huangfugui.ibatis.po.User;
 import org.huangfugui.ibatis.util.SqlSessionFactoryUtil;
@@ -31,7 +32,7 @@ public class UserMapperTest {
         System.out.println(result);
         sqlSession.commit();*/
 
-        int result = userMapper.insertUser("1151650717@qq.com","123");
+        int result = userMapper.insertUser("1151650717@qq.com","123", UserType.USER);
         System.out.println(result);
     }
 
@@ -44,7 +45,7 @@ public class UserMapperTest {
         System.out.println(user);
         sqlSession.commit();*/
 
-        User user = userMapper.selectByUsernameAndPassword("黄复贵","qwe123");
+        User user = userMapper.selectByUsernameAndPassword("1151650717@qq.com","123");
         System.out.println(user);
     }
 }

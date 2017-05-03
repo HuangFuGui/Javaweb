@@ -3,13 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    
+
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <typeAliases>
         <typeAlias type="org.huangfugui.ibatis.po.User" alias="user"></typeAlias>
     </typeAliases>
 
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="org.huangfugui.ibatis.enums.Sex"></typeHandler>
+        <typeHandler handler="org.apache.ibatis.type.EnumTypeHandler" javaType="org.huangfugui.ibatis.enums.UserType"></typeHandler>
     </typeHandlers>
 
     <!--
