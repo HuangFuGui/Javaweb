@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true" />
+        <setting name="aggressiveLazyLoading" value="false" />
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <typeAliases>
+        <typeAlias alias="role" type="po.Role"></typeAlias>
+        <typeAlias alias="user" type="po.User"></typeAlias>
+    </typeAliases>
+
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" javaType="enums.Sex"></typeHandler>
+    </typeHandlers>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mybatis?useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="username" value="root"/>
+                <property name="password" value=""/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--引入映射器-->
+    <mappers>
+        <mapper resource="roleMapper.xml"/>
+        <mapper resource="userMapper.xml"/>
+        <mapper resource="studentMapper.xml"/>
+        <mapper resource="studentSelfcardMapper.xml"/>
+        <mapper resource="lectureMapper.xml"></mapper>
+        <mapper resource="studentLectureMapper.xml"></mapper>
+    </mappers>
+
+</configuration>

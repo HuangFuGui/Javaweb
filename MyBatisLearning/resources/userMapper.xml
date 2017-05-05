@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+
+    <insert id="insertUser" parameterType="user">
+        insert into t_user
+        (user_name,
+         cnname,
+         birthday,
+         sex,
+         email,
+         mobile,
+         note)
+        values
+        (#{userName},#{cnname},#{birthday},#{sex},#{email},#{mobile},#{note})
+    </insert>
+
+    <select id="getUser" parameterType="long" resultType="user">
+        select id,user_name,cnname,birthday,sex,email,mobile,note
+        from t_user
+        where id = #{id}
+    </select>
+
+</mapper>

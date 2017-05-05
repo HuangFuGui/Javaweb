@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mapper.RoleMapper">
+
+    <cache></cache>
+
+    <select id="getRole" parameterType="long" resultType="role">
+        select id,role_name as roleName,note from t_role where id = #{id}
+    </select>
+
+    <insert id="insertRole" parameterType="role" useGeneratedKeys="true" keyProperty="id">
+        insert into t_role(role_name,note) values(#{roleName},#{note})
+    </insert>
+
+    <delete id="deleteRole" parameterType="long">
+        delete from t_role where id = #{id}
+    </delete>
+
+    <resultMap id="myRole" type="role">
+        <constructor>
+            <arg column="role_name" javaType="string"></arg>
+            <arg column="note" javaType="string"></arg>
+        </constructor>
+    </resultMap>
+    <select id="findRoleByMap" resultMap="myRole">
+        select id,role_name,note from t_role
+        where role_name like concat('%',#{roleName},'%')
+        and note like concat('%',#{note},'%')
+    </select>
+
+    <select id="findRoles" parameterType="string" resultMap="myRole">
+        select
+          id,role_name,note
+        from
+          t_role
+        WHERE 1
+        <if test="roleName != null and roleName != ''">
+            and role_name like concat('%',#{roleName},'%')
+        </if>
+    </select>
+</mapper>

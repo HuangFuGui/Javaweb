@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.StudentLectureMapper">
+    <resultMap id="studentLectureMap" type="po.StudentLectureBean">
+        <id property="id" column="id"></id>
+        <result property="studentId" column="student_id"></result>
+        <result property="grade" column="grade"></result>
+        <result property="note" column="note"></result>
+        <association property="lecture" column="lecture_id" fetchType="eager" select="mapper.LectureMapper.getLecture"></association>
+    </resultMap>
+    <select id="findStudentLectureByStuId" parameterType="int" resultMap="studentLectureMap">
+        select id,student_id,lecture_id,grade,note from t_student_lecture where student_id = #{id}
+    </select>
+</mapper>

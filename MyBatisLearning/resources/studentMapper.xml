@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.StudentMapper">
+    <resultMap id="studentMap" type="po.StudentBean">
+        <id property="id" column="id"></id>
+        <result property="cnname" column="cnname"></result>
+        <result property="sex" column="sex"></result>
+        <result property="note" column="note"></result>
+        <association property="studentSelfcard" column="id"
+                     select="mapper.StudentSelfcardMapper.findStudentSelfcardByStudentId">
+        </association>
+        <collection property="studentLectureList" column="id" fetchType="eager" select="mapper.StudentLectureMapper.findStudentLectureByStuId"></collection>
+    </resultMap>
+    <select id="getStudent" parameterType="long" resultMap="studentMap">
+        select id,cnname,sex,note from t_student where id = #{id}
+    </select>
+</mapper>
