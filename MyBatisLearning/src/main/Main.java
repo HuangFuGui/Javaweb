@@ -32,7 +32,8 @@ public class Main {
             /*Map<String,String> paramsMap = new HashMap<String,String>();
             paramsMap.put("roleName","huang");
             paramsMap.put("note","Mybatis");
-            List<Role> list = roleMapper.findRoleByMap(paramsMap);
+            List<Role> list2 = roleMapper.findRoleByMap(paramsMap);
+            //MyBatis默认支持一级缓存，相同SqlSession相同SQL相同参数的查询将不再发送SQL到数据库
             List<Role> list = roleMapper.findRoleByMap("huang","Mybatis");
             for(Role role:list){
                 System.out.println(role);
@@ -41,8 +42,8 @@ public class Main {
 
             sqlSession2 = SqlSessionFactoryUtil.openSqlSession();
             RoleMapper roleMapper2 = sqlSession.getMapper(RoleMapper.class);
-            List<Role> list2 = roleMapper.findRoleByMap("huang","Mybatis");
-            for(Role role:list2){
+            List<Role> list3 = roleMapper.findRoleByMap("huang","Mybatis");
+            for(Role role:list3){
                 System.out.println(role);
             }
             sqlSession2.commit();*/

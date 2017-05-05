@@ -5,12 +5,17 @@
 
 <mapper namespace="mapper.RoleMapper">
 
+    <!--
+        开启MyBatis二级缓存，相应对象要实现Serializable接口
+        缓存面向同一个SqlSessionFactory，被各个SqlSession所共享
+    -->
     <cache></cache>
 
     <select id="getRole" parameterType="long" resultType="role">
         select id,role_name as roleName,note from t_role where id = #{id}
     </select>
 
+    <!--插入操作，自增id字段回填对象-->
     <insert id="insertRole" parameterType="role" useGeneratedKeys="true" keyProperty="id">
         insert into t_role(role_name,note) values(#{roleName},#{note})
     </insert>
