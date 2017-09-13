@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/7/20.
- */
 public interface youandmeService {
 
     /**
@@ -158,5 +155,6 @@ public interface youandmeService {
     void deletePluploadFile(HttpServletRequest request,int userId,int id);
 
     PluploadFile showFileOfId(int id);
+
 
 }

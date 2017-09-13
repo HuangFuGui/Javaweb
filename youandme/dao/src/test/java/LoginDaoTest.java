@@ -10,9 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-/**
- * Created by Administrator on 2016/7/21.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml"})
 public class LoginDaoTest {

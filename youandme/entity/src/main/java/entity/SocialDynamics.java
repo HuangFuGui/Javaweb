@@ -3,9 +3,6 @@ package entity;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/7/23.
- */
 public class SocialDynamics {
 
     private int dynamicsId;

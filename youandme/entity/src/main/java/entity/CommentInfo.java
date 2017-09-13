@@ -2,9 +2,6 @@ package entity;
 
 import java.sql.Timestamp;
 
-/**
- * Created by Administrator on 2016/8/3.
- */
 public class CommentInfo {
     private int commentId;
     private int sendId;

@@ -39,9 +39,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/7/20.
- */
+
 @Service
 public class youandmeServiceImpl implements youandmeService {
 
@@ -410,4 +408,5 @@ public class youandmeServiceImpl implements youandmeService {
         PluploadFile pluploadFile = pluploadDao.selectFileById(id);
         return pluploadFile;
     }
+
 }

@@ -33,3 +33,4 @@
 20.js函数传参暂时无法实现传文本，只能传数字
 21.http://blog.csdn.net/liu4071325/article/details/8690499
 22.html的各div同级子元素最好规定样式名称，用nth-of-type选择器有弊端！
+23.linux服务器大小写敏感，所以数据库定义、SQL语句的编写要谨慎仔细！

@@ -7,9 +7,6 @@ import org.apache.ibatis.annotations.Param;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/8/3.
- */
 public interface CommentDao {
 
     /**

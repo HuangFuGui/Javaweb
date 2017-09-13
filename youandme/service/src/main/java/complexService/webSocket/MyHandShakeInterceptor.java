@@ -37,4 +37,5 @@ public class MyHandShakeInterceptor implements HandshakeInterceptor {
     public void afterHandshake(ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse, WebSocketHandler webSocketHandler, Exception e) {
 
     }
+
 }

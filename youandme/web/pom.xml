@@ -22,6 +22,7 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
+
     <!--web模块依赖于dto模块 -->
     <dependency>
       <groupId>org.hfg.youandme</groupId>

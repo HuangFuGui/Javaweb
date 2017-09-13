@@ -5,15 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.util.DigestUtils;
 import service.youandmeService;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
-/**
- * Created by Administrator on 2016/7/21.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:spring/spring-dao.xml",
                        "classpath:spring/spring-service.xml"})
@@ -51,6 +47,15 @@ public class youandmeServiceTest {
         for(User user:list){
             System.out.println(user);
         }
+    }
+
+    @Test
+    public void testMD5(){
+        String password = "123";
+        String slat = "123746382746378asdasd!@!@@@#";
+        String base = password+"/"+slat;
+        String result = DigestUtils.md5DigestAsHex(base.getBytes());
+        System.out.println(result);
     }
 
 }

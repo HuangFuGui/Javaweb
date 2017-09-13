@@ -21,4 +21,6 @@
         WHERE
           (username = #{stringToLogin} AND password = #{password}) OR (email = #{stringToLogin} AND password = #{password})
     </select>
+
+
 </mapper>

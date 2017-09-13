@@ -15,9 +15,6 @@ import java.sql.Timestamp;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- * Created by huangfugui on 2016/12/20.
- */
 @Component
 public class pluploadServiceImpl implements pluploadService {
 
@@ -113,4 +110,5 @@ public class pluploadServiceImpl implements pluploadService {
             }
         }
     }
+
 }

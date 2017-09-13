@@ -6,9 +6,6 @@ import org.apache.ibatis.annotations.Param;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/8/24.
- */
 public interface PluploadDao {
 
     /**

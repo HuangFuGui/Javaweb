@@ -19,4 +19,5 @@
           (from_id = #{fromId} AND to_id = #{toId}) OR (from_id = #{toId} AND to_id = #{fromId})
     </select>
 
+
 </mapper>

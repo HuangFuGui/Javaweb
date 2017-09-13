@@ -3,11 +3,6 @@ package dao;
 import entity.User;
 import org.apache.ibatis.annotations.Param;
 
-
-
-/**
- * Created by Administrator on 2016/7/20.
- */
 public interface LoginDao {
     /**
      * ≤Â»Î”√ªß£¨º¥◊¢≤·’ ∫≈

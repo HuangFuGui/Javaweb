@@ -26,4 +26,5 @@ public class MyWebSocketConfig extends WebMvcConfigurerAdapter implements WebSoc
         //添加websocket处理器，添加握手拦截器
         webSocketHandlerRegistry.addHandler(handler, "/ws/sockjs").addInterceptors(new MyHandShakeInterceptor()).withSockJS();
     }
+
 }

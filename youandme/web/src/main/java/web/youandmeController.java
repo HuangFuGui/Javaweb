@@ -7,6 +7,7 @@ import entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.*;
 import service.youandmeService;
 import javax.servlet.ServletException;
@@ -18,12 +19,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/7/20.
- */
 @Controller
 @RequestMapping(value = "/youandme")
 public class youandmeController {
+
+    private final String salt = "asd$%^$156120#BbK0-%^%*&!&*fef~{}@##VJ*{))&@@@@#";
 
     //自动装载service写好的接口（已实现对象，存在SpringIOC容器中）
     @Autowired
@@ -136,8 +136,11 @@ public class youandmeController {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
+        String base = password+"/"+salt;
+        String passwordMD5 = DigestUtils.md5DigestAsHex(base.getBytes());
+
         //注册service
-        youandmeService.register(username,password,email);
+        youandmeService.register(username,passwordMD5,email);
 
         User user = new User(username);
         return new youandmeResult<User>(user,true,"register success!");//注册成功只返回用户名
@@ -162,8 +165,13 @@ public class youandmeController {
         }
 
         String stringToLogin = request.getParameter("stringToLogin");
+
         String password = request.getParameter("password");
-        User user = youandmeService.login(stringToLogin, password);
+        String base = password+"/"+salt;
+        String passwordMD5 = DigestUtils.md5DigestAsHex(base.getBytes());
+        System.out.println(passwordMD5);
+
+        User user = youandmeService.login(stringToLogin, passwordMD5);
         if(user == null){//不能登录
             return new youandmeResult(false,"fail to login!Please check your Information!");
         }

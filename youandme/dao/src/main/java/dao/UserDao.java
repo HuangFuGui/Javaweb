@@ -5,9 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2016/7/28.
- */
 public interface UserDao {
 
     /**

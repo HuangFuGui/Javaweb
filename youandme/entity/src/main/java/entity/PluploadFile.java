@@ -2,9 +2,6 @@ package entity;
 
 import java.sql.Timestamp;
 
-/**
- * Created by Administrator on 2016/8/24.
- */
 public class PluploadFile {
 
     private int id;

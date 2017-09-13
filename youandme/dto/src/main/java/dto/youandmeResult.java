@@ -1,8 +1,5 @@
 package dto;
 
-/**
- * Created by Administrator on 2016/7/21.
- */
 public class youandmeResult<T> {
 
     private T  data;//·ºĞÍÊı¾İ

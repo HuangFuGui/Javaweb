@@ -3,9 +3,7 @@ package entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * Created by Administrator on 2016/8/15.
- */
+
 public class Message {
 
     private int messageId;

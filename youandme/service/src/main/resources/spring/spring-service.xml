@@ -10,4 +10,5 @@
     <!--扫描service包下所有使用注解的类型-->
     <context:component-scan base-package="service,complexService.download,complexService.plupload,complexService.webSocket"></context:component-scan>
 
+
 </beans>

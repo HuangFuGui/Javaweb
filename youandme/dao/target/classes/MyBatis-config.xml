@@ -17,4 +17,5 @@
                 <!--开启驼峰命名转换 user_id  To  userId  -->
                 <setting name="mapUnderscoreToCamelCase" value="true"/>
         </settings>
+
 </configuration>

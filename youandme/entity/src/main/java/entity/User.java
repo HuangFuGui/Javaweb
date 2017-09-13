@@ -1,9 +1,5 @@
 package entity;
 
-
-/**
- * Created by Administrator on 2016/7/20.
- */
 public class User {
 
     private int userId;//数据库中为user_id，驼峰转换

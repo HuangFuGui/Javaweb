@@ -77,7 +77,7 @@
 
     <insert id="insertLike">
         INSERT
-          dynamics_like_user
+          dynamics_like_user(dynamics_id, user_id)
         VALUES
           (#{dynamicsId},#{userId})
     </insert>
@@ -146,5 +146,7 @@
         WHERE
           dlu.dynamics_id = #{dynamicsId}
     </select>
+
+
 
 </mapper>

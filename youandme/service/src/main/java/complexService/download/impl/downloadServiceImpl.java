@@ -14,9 +14,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
-/**
- * Created by huangfugui on 2016/12/20.
- */
 @Component
 public class downloadServiceImpl implements downloadService {
 
@@ -47,3 +44,4 @@ public class downloadServiceImpl implements downloadService {
         outputStream.close();
     }
 }
+

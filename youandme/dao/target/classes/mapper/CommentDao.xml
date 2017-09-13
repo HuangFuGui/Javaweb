@@ -91,7 +91,7 @@
       FROM
         reply_info AS ri
       INNER JOIN
-        User AS u ON ri.send_id = u.user_id
+        user AS u ON ri.send_id = u.user_id
       WHERE
         ri.reply_id = (SELECT reply_id FROM reply_info WHERE send_id = #{sendId} ORDER BY reply_id DESC LIMIT 1)
     </select>
@@ -109,7 +109,7 @@
       FROM
         reply_info AS ri
       INNER JOIN
-        User AS u ON ri.send_id = u.user_id
+        user AS u ON ri.send_id = u.user_id
       WHERE
         ri.comment_id = #{commentId}
       ORDER BY
@@ -130,7 +130,7 @@
       FROM
         reply_info AS ri
       INNER JOIN
-        User AS u ON ri.send_id = u.user_id
+        user AS u ON ri.send_id = u.user_id
       WHERE
         ri.reply_id = #{replyId}
       ORDER BY
