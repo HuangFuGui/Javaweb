@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/basics.iml" filepath="$PROJECT_DIR$/basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/waitnotify.iml" filepath="$PROJECT_DIR$/waitnotify.iml" />
     </modules>
   </component>
 </project>
