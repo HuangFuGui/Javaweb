@@ -7,7 +7,7 @@ public class NIOServer {
     private final static String addr = "127.0.0.1";
     private final static int port = 9090;
     private final static int size = 1024;
-    //实现编码、解码的字符集对象
+    // 实现编码、解码的字符集对象
     private Charset charset= Charset.forName("UTF-8");
     public void init() throws Exception {
         Selector selector = Selector.open();
@@ -25,9 +25,9 @@ public class NIOServer {
                     socketChannel.configureBlocking(false);
                     socketChannel.register(selector, SelectionKey.OP_READ);
                 } else if (selectionKey.isReadable()) {
-                    //获取该SelectionKey对应的Channel，该Channel中有可读的数据
+                    // 获取该SelectionKey对应的Channel，该Channel中有可读的数据
                     SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
-                    //定义接收数据的ByteBuffer
+                    // 定义接收数据的ByteBuffer
                     ByteBuffer buff = ByteBuffer.allocate(size);
                     String content = "";
                     while (socketChannel.read(buff) > 0) {
@@ -38,7 +38,7 @@ public class NIOServer {
 
                     // 如果聊天信息不为空，就群发
                     if (content.length() > 0) {
-                        //遍历该selector里注册的所有SelectKey
+                        // 遍历该selector里注册的所有SelectKey
                         for (SelectionKey selectionKey1 : selector.keys()) {
                             Channel channel = selectionKey1.channel();
                             if(channel instanceof SocketChannel) {
