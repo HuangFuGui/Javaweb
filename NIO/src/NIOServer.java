@@ -1,58 +1,56 @@
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.nio.ByteBuffer;
-import java.nio.channels.SelectionKey;
-import java.nio.channels.Selector;
-import java.nio.channels.ServerSocketChannel;
-import java.nio.channels.SocketChannel;
-import java.util.Iterator;
-import java.util.Set;
+import java.nio.channels.*;
+import java.nio.charset.Charset;
 
 public class NIOServer {
-    private final static int size = 8;
-    private final static int PORT = 9090;
-    public static void main(String[] args) throws Exception {
-        ByteBuffer echoBuffer = ByteBuffer.allocate(size);
-
-        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
-        serverSocketChannel.configureBlocking(false);
-        ServerSocket serverSocket = serverSocketChannel.socket();
-        InetSocketAddress inetSocketAddress = new InetSocketAddress(PORT);
-        serverSocket.bind(inetSocketAddress);
-
+    private final static String addr = "127.0.0.1";
+    private final static int port = 9090;
+    private final static int size = 1024;
+    //实现编码、解码的字符集对象
+    private Charset charset= Charset.forName("UTF-8");
+    public void init() throws Exception {
         Selector selector = Selector.open();
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        InetSocketAddress inetSocketAddress = new InetSocketAddress(addr, port);
+        serverSocketChannel.socket().bind(inetSocketAddress);
+        serverSocketChannel.configureBlocking(false);
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-        System.out.println("开始监听...");
-
-        for(;;) {
-            selector.select();
-            Set selectedKeys = selector.selectedKeys();
-            Iterator iterator = selectedKeys.iterator();
-            while(iterator.hasNext()) {
-                SelectionKey selectionKey = (SelectionKey)iterator.next();
-                SocketChannel sc = null;
+        for(;selector.select() > 0;) {
+            for(SelectionKey selectionKey : selector.selectedKeys()) {
+                // 从selector已选择的key集合中删除正在处理的selectionKey
+                selector.selectedKeys().remove(selectionKey);
                 if (selectionKey.isAcceptable()) {
-                    ServerSocketChannel ssc = (ServerSocketChannel) selectionKey.channel();
-                    sc = ssc.accept();
-                    sc.configureBlocking(false);
-                    sc.register(selector, SelectionKey.OP_READ);
-                    iterator.remove();
+                    SocketChannel socketChannel = serverSocketChannel.accept();
+                    socketChannel.configureBlocking(false);
+                    socketChannel.register(selector, SelectionKey.OP_READ);
                 } else if (selectionKey.isReadable()) {
-                    sc = (SocketChannel) selectionKey.channel();
-                    for (;;) {
-                        echoBuffer.clear();
-                        int total = sc.read(echoBuffer);
-                        if (total <= 0) {
-                            sc.close();
-                            System.out.println("接受完毕，断开连接。");
-                            break;
-                        }
-                        System.out.println("长度：" + total + "，内容：" + new String(echoBuffer.array(), 0, echoBuffer.position()));
-                        echoBuffer.flip();
+                    //获取该SelectionKey对应的Channel，该Channel中有可读的数据
+                    SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+                    //定义接收数据的ByteBuffer
+                    ByteBuffer buff = ByteBuffer.allocate(size);
+                    String content = "";
+                    while (socketChannel.read(buff) > 0) {
+                        buff.flip();
+                        content += charset.decode(buff);
                     }
-                    iterator.remove();
+                    System.out.println("==========" + content);
+
+                    // 如果聊天信息不为空，就群发
+                    if (content.length() > 0) {
+                        //遍历该selector里注册的所有SelectKey
+                        for (SelectionKey selectionKey1 : selector.keys()) {
+                            Channel channel = selectionKey1.channel();
+                            if(channel instanceof SocketChannel) {
+                                ((SocketChannel) channel).write(charset.encode(content));
+                            }
+                        }
+                    }
                 }
             }
         }
+    }
+    public static void main(String[] args) throws Exception {
+        new NIOServer().init();
     }
 }
