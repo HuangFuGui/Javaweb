@@ -15,7 +15,8 @@ public class TwinsLockTest {
                         e.printStackTrace();
                     } finally {
                         lock.unlock();
-                        // 刚刚释放锁的线程进行sleep，将机会让给同步队列中刚被唤醒的线程
+                        // 刚刚释放锁的线程进行sleep，将机会让给同步队列中刚被唤醒的线程（模拟公平锁）
+                        // 若不进行sleep，直接回到while(true)，是非公平锁的场景
                         try {
                             Thread.sleep(1);
                         } catch (InterruptedException e) {
