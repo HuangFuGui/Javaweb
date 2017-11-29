@@ -17,10 +17,10 @@ public class ReentrantLockTest {
         public void run() {
             while (true) {
                 lock.lock();
-                try{
+                try {
                     Thread.sleep(1000);
                     System.out.println(Thread.currentThread().getName());
-                }catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 lock.unlock();
